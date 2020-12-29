@@ -87,7 +87,7 @@ type MyProfile implements IProfile{
   location: String
   website: AWSURL
   birthdate: AWSDate
-  createdAt: AWSDate
+  createdAt: AWSDateTime!
   tweets: TweetsPage!
   followerCount: Int!
   followingCount: Int!
@@ -105,7 +105,7 @@ type OtherProfile implements IProfile{
   location: String
   website: AWSURL
   birthdate: AWSDate
-  createdAt: AWSDate
+  createdAt: AWSDateTime!
   tweets: TweetsPage!
   followerCount: Int!
   followingCount: Int!
@@ -116,7 +116,9 @@ type OtherProfile implements IProfile{
 }
 
 interface ITweet {
-
+  id: ID!
+  profile: IProfile!
+  createdAt: AWSDateTime!
 }
 
 type Tweet implements ITweet{
@@ -146,7 +148,7 @@ type Reply implements ITweet {
 }
 
 type Retweet implements ITweet{
-i id: ID!
+  id: ID!
   profile: IProfile!
   createdAt: AWSDateTime!
   retweetOf: ITweet!
